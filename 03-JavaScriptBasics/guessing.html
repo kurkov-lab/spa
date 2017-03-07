@@ -8,14 +8,29 @@
 		<h1>Try to guess</h1>
 
 		<script>
+			function getRandomInt(min, max) {
+ 				min = Math.ceil(min);
+  				max = Math.floor(max);
+  				return Math.floor(Math.random() * (max - min)) + min;
+			}
 			// read user's number (popup window)
-			
-			// create a random number
-			
-			// compare the numbers
-			
-			// show results (popup window)
-			
+			let guessNumber = getRandomInt(1, 5);
+			console.log(guessNumber);
+			let guessingNumber = parseInt(prompt("Input number between 1-5"));
+			console.log(guessingNumber);
+
+			while (true) {
+				if (guessingNumber > guessNumber) {
+					guessingNumber = parseInt(prompt("Too much, please again..."));
+				} else if (guessingNumber < guessNumber) {
+					guessingNumber = parseInt(prompt("Not enough, please again..."));
+				} else  if (guessingNumber === guessNumber) {
+					alert("CORRECT");
+					break;
+				} else {
+					guessingNumber = parseInt(prompt("Not valid value, please enter only number"));
+				}
+			}
 		</script>
 	</body>
 </html>

@@ -9,13 +9,17 @@
 		<p>Display data one the console</p>
 
 		<script>
-			// enter your name, surname
-			// ...
-			
-			// display your personal data on the console
-			// ...
-			
-			// 
+			let name = prompt("name = ");
+			let surname = prompt("surname = ");
+			let age = prompt("age = ");
+
+			if (confirm("Do you want to display data in console?")) {
+				console.log("name = ", name);
+				console.log("surname = ", surname);
+				console.log("age = ", age);
+			}
 		</script>
 	</body>
 </html>
+
+
