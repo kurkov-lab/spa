@@ -39,8 +39,13 @@
 				
 				// complete a JavaScript code here ...
 				// ...
-				console.log(first[n()] +" "+ second[n()] +" "+ third[n()] +" "+ fourth[n()]);
+				document.getElementById("speech").innerText = first[n()] +" "+ second[n()] +" "+ third[n()] +" "+ fourth[n()];
+
 			}
+
+			setInterval(function() {
+				document.getElementsByTagName('button')[0].click();
+			}, 1000);
 
 			function nextInt(min, max) {
  				min = Math.ceil(min);
