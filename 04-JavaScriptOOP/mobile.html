@@ -6,7 +6,26 @@
 	</head>
 	<body>
 		<h1>Create mobile phone</h1>
+		<button id="button" type="button" onclick="clicking()">Click</button>
 		<script>
+			let phone = {
+				brand: "Apple",
+				model: "iPhone 5",
+				weight: 112,
+				isDiscontinued: true,
+				storage: [16, 32, 64],
+				camera: {
+					model: "Sony Exmor R IMX145",
+					resolutoin: "8 MP iSight",
+					video: "HD video (1080p) at 30 frame/s",
+					aperture: "f/2.4"
+				}
+			}
+
+			function clicking() {
+				alert(JSON.stringify(phone));
+			}
+
 		</script>
 	</body>
 </html>
