@@ -1,31 +1,12 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Houses for sale</title>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		<h1>Houses for sale</h1>
-		<script>
-			function House(bedrooms, facilities, price, address, phone) {
-				this.bedrooms = bedrooms;
-				this.facilities = facilities;
-				this.price=price;
-				this.address=address;
-				this.phone = phone;
-			}
-			House.prototype.changePrice(newPrice) {
-				this.price = newPrice;
-			}
-			House.prototype.addFacility = function(newFacility) {
-				if (newFacility !== null || newFacility !== undefined) {
-					facilities.push(newFacility);
-				}
-			};
-
-			House.prototype.description = function() {
-				return "some DESCRIPTION";
-			};
-		</script>
-	</body>
+    <head>
+        <title>Houses for sale</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Houses for sale</h1>
+        <script src="./js/forsale.js">
+        </script>
+    </body>
 </html>
