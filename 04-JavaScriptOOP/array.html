@@ -10,15 +10,24 @@
 			var myArray = {
 					arr: [3,4,76,1,5,787,33,76,1,99,45,235,53,23],
 					sorting: function() {
-						this.arr.sort(function(a, b) {
-							if (a === b) return 0;
-							return a < b ? -1 : 1;
-						});
+						function comparator(a, b) {
+							// if (a === b) return 0;
+							// return a < b ? -1 : 1;
+
+							// verbose
+							// if (a === b) return 0;
+							// if (a < b) return -1;
+							// if (a > b) return 1;
+
+							// the best
+							return a - b;
+						}
+						this.arr.sort(comparator);
 					},
 					min: function(){
 						return this.arr[0];
 						// maximum value (sort the arr and take the last value, use a built-in function)
-					},		
+					},
 					max: function(){
 						return this.arr[this.arr.length - 1];
 					},		// look at the min method comment
@@ -39,7 +48,7 @@
 						return counter;
 					}	// the number of arr values less than 'val'
 			};
-			
+
 			// display results (min,max,avg,lth) in the console
 			// ...
 
