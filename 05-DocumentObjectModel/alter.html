@@ -21,7 +21,11 @@
 		
 		<script>
 			// a JavaScript code here ...
-			
+			let songTitle = document.getElementsByTagName("h1")[0];
+			songTitle.addEventListener('mouseover', function() {
+				let part2 = document.getElementsByTagName("p")[1];
+				part2.style.visibility = "visible";
+			});
 		</script>
 	</body>
 </html>
