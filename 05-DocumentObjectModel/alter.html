@@ -4,7 +4,7 @@
 		<title>Change colour</title>
 		<meta charset="UTF-8">
 	</head>
-	<body>
+	<body oncopy="alert('COPYRIGHT');">
 		<h1>Another Brick in the Wall</h1>
 		<h3>Pink Floyd</h3>
 		<p>We don't need no education<br>
@@ -15,17 +15,39 @@
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
 		
-		<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
+		<p style="display: none;">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
+
+		<p style="display: none;">
+			Pink Floyd were an English rock band formed in London. They achieved international acclaim with their progressive and psychedelic music. Distinguished by their use of philosophical lyrics, sonic experimentation, extended compositions and elaborate live shows, they are one of the most commercially successful and influential groups in the history of popular music.
+		</p>
 		
 		<script>
 			// a JavaScript code here ...
 			let songTitle = document.getElementsByTagName("h1")[0];
-			songTitle.addEventListener('mouseover', function() {
+			songTitle.addEventListener("click", function() {
 				let part2 = document.getElementsByTagName("p")[1];
-				part2.style.visibility = "visible";
+				part2.style.display = "block";
 			});
+
+			let bandName = document.getElementsByTagName("h3")[0];
+			bandName.addEventListener("click", function() {
+				let desc = document.getElementsByTagName("p")[2];
+				desc.style.display = "block";
+			});
+
+			let text = document.getElementsByTagName("p")[0];
+			text.addEventListener("click", function() {
+				text.style.fontStyle = 'italic';
+			});
+
+			document.body.addEventListener("dblclick", function(event) {
+				console.log(event.target);
+				console.log(document.body);
+				document.body.style.backgroundColor = "yellow";
+			})
+
 		</script>
 	</body>
 </html>
