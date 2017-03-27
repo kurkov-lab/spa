@@ -4,24 +4,50 @@
 		<title>Change colour</title>
 		<meta charset="UTF-8">
 	</head>
-	<body>
+	<body oncopy="alert('NIE MA TAKIEGO KOPIOWANIA');">
 		<h1>Another Brick in the Wall</h1>
 		<h3>Pink Floyd</h3>
-		<p>We don't need no education<br>
+		<p style="display: none;" >We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
 		Hey! Teachers! Leave them kids alone<br>
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
-		
-		<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
+
+		<p style="display: none;">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
-		
+
 		<script>
-			// a JavaScript code here ...
-			
+			let title = document.getElementsByTagName("h1")[0];
+			let bandName = document.getElementsByTagName("h3")[0];
+			let lyrics = document.getElementsByTagName("p")[0];
+			let bandDesc = document.getElementsByTagName("p")[1];
+			let body = document.getElementsByTagName("body")[0];
+
+			title.addEventListener("click", function () {
+                lyrics.style.display = "block";
+            });
+
+			bandName.addEventListener("click", function () {
+                bandDesc.style.display = "block";
+            });
+
+            lyrics.addEventListener("click", function () {
+                lyrics.style.fontStyle = "italic";
+            });
+
+            body.addEventListener("dblclick", function () {
+                body.style.backgroundColor = "yellow";
+            });
+
+            let pic = document.createElement("img");
+            pic.setAttribute("src", "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg");
+
+            bandDesc.addEventListener("click", function () {
+                body.appendChild(pic);
+            });
 		</script>
 	</body>
 </html>
