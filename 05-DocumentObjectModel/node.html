@@ -3,11 +3,58 @@
 	<head>
 		<title>Create DOM elements</title>
 		<meta charset="UTF-8">
+        <style>
+            table {
+                border-collapse: collapse;
+                text-align: left;
+            }
+
+            th {
+                background-color: #aaa;
+            }
+
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
 	</head>
 	<body>
 		<script>
-			// a JavaScript code here ...
-			
+            let body = document.getElementsByTagName("body")[0];
+			let table = document.createElement("table");
+
+            let rowOne = document.createElement("tr");
+
+            let fieldOne = document.createElement("th");
+            let fieldTwo = document.createElement("th");
+            fieldOne.innerText = "Email";
+            fieldTwo.innerText = "Connection to the Internet";
+            rowOne.appendChild(fieldOne);
+            rowOne.appendChild(fieldTwo);
+            table.appendChild(rowOne);
+
+            let texts = [
+                "receive/get/open an email",
+                "use/access/log onto the Internet",
+                "exchange email addresses",
+                "access/connect to/locate the server",
+                "open/send/contain an attachment",
+                "browse/surf/search/scour the Interner",
+                "open/check your inbox",
+                "install/use/configure a firewall"
+            ];
+
+            for (let x = 0; x < 4; x++) {
+                let row = document.createElement("tr");
+                for (let y = 0; y < 2; y++) {
+                    let field = document.createElement("td");
+                    field.innerText = texts[y + x * 2];
+                    row.appendChild(field);
+                }
+                table.appendChild(row);
+            }
+
+            body.appendChild(table);
 		</script>
 	</body>
 </html>
