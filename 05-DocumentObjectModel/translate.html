@@ -8,10 +8,17 @@
 		<h3>Sticks and stones may break my bones, but words will never harm me.</h3>
 		<script>
 			// a JavaScript code here ...
-			
-			// Translation:
-			// Kije i kamienie kości mi połamią, ale twoje słowa nigdy mnie nie zranią
-			
+            // Translation:
+            // Kije i kamienie kości mi połamią, ale twoje słowa nigdy mnie nie zranią
+
+			let h3 = document.getElementsByTagName("h3")[0];
+			h3.addEventListener("mouseover", function () {
+			    this.innerText = "Kije i kamienie kości mi połamią, ale twoje słowa nigdy mnie nie zranią.";
+            });
+            h3.addEventListener("mouseout", function () {
+                this.innerText = "Sticks and stones may break my bones, but words will never harm me.";
+            });
+
 		</script>
 	</body>
 </html>
