@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<h1>How fast are your fingers?</h1>
-		<h3>You have 30 seconds. Just start typing...</h3>
+        <h3>You have 30 seconds. Just start typing...</h3>
 		<p>Nam strzelać nie kazano. - Wstąpiłem na działo<br>
 		I spójrzałem na pole; dwieście armat grzmiało.<br>
 		Artyleryi ruskiej ciągną się szeregi,<br>
@@ -21,10 +21,29 @@
 		Jak głaz bodzący morze, reduta Ordona.</p>
 		
 		<textarea rows="15" cols="50"></textarea><br>
-		
+
+
 		<script>
-			// a JavaScript code here ...
-			
+            let textarea = document.getElementsByTagName("textarea")[0];
+            let text = document.getElementsByTagName("p")[0].innerText;
+            console.log(text);
+
+            textarea.addEventListener("focus", function (event) {
+                console.log('start counting');
+                setTimeout(function() {
+                    let lastTextState = event.target.value;
+                    let words = lastTextState.split(" ");
+                    let wordsLength = words.length;
+                    let textLength = lastTextState.length;
+
+                    let counter = document.createElement("p");
+                    counter.innerText = "Napisales" + wordsLength + " słów i " + textLength + " znaków";
+                    document.getElementsByTagName("body")[0].appendChild(counter);
+
+                    event.target.value = "";
+                }, 10 * 1000);
+            });
+
 		</script>
 		
 	</body>
