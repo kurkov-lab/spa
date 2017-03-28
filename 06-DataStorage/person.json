@@ -1,0 +1,51 @@
+{
+  "name": "John",
+  "surname": "Smith",
+  "age": 30,
+  "gender": "male",
+  "email": "john@example.com",
+  "phone": [
+    "600 700 800",
+    "33 444 55 66"
+  ],
+  "address": {
+    "street": "Long Avenue",
+    "number": 33,
+    "postalCode": "45-555",
+    "city": "Beverly Hills"
+  },
+  "interests": [
+    "some",
+    "interests"
+  ],
+  "family": {
+    "spouse": {
+      "name": "Lily",
+      "surname": "Smith"
+    },
+    "childrenList": [
+      {
+        "name": "Max",
+        "surname": "Smith",
+        "gender": "male",
+        "age": 8,
+        "interests": [
+          "some",
+          "boy's",
+          "interests"
+        ]
+      },
+      {
+        "name": "Sarah",
+        "surname": "Smith",
+        "gender": "female",
+        "age": 10,
+        "interests": [
+          "some",
+          "girls's",
+          "interests"
+        ]
+      }
+    ]
+  }
+}

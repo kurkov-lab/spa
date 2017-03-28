@@ -8,6 +8,7 @@
 		<h3>Sticks and stones may break my bones, but words will never harm me.</h3>
 		<script>
 			// a JavaScript code here ...
+<<<<<<< HEAD
 			let h3Tag = document.getElementsByTagName("h3")[0];
 			h3Tag.addEventListener("mouseover", function() {
 				this.innerText = "Kije i kamienie kości mi połamią, ale twoje słowa nigdy mnie nie zranią";
@@ -19,6 +20,18 @@
 			});
 			// Translation:
 			// Kije i kamienie kości mi połamią, ale twoje słowa nigdy mnie nie zranią
+=======
+            // Translation:
+            // Kije i kamienie kości mi połamią, ale twoje słowa nigdy mnie nie zranią
+
+			let h3 = document.getElementsByTagName("h3")[0];
+			h3.addEventListener("mouseover", function () {
+			    this.innerText = "Kije i kamienie kości mi połamią, ale twoje słowa nigdy mnie nie zranią.";
+            });
+            h3.addEventListener("mouseout", function () {
+                this.innerText = "Sticks and stones may break my bones, but words will never harm me.";
+            });
+>>>>>>> 22c9527ad25371c97ab46a007786be411642fee5
 
 		</script>
 	</body>

@@ -1,31 +1,72 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Typing test</title>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		<h1>How fast are your fingers?</h1>
-		<h3>You have 30 seconds. Just start typing...</h3>
-		<p>Nam strzelać nie kazano. - Wstąpiłem na działo<br>
-		I spójrzałem na pole; dwieście armat grzmiało.<br>
-		Artyleryi ruskiej ciągną się szeregi,<br>
-		Prosto, długo, daleko, jako morza brzegi;<br>
-		I widziałem ich wodza: przybiegł, mieczem skinął<br>
-		I jak ptak jedno skrzydło wojska swego zwinął;<br>
-		Wylewa się spod skrzydła ściśniona piechota<br>
-		Długą czarną kolumną, jako lawa błota,<br>
-		Nasypana iskrami bagnetów. Jak sępy<br>
-		Czarne chorągwie na śmierć prowadzą zastępy.<br>
-		Przeciw nim sterczy biała, wąska, zaostrzona,<br>
-		Jak głaz bodzący morze, reduta Ordona.</p>
-		
-		<textarea rows="15" cols="50"></textarea><br>
-		
-		<script>
-			// a JavaScript code here ...
-			
-		</script>
-		
-	</body>
+<head>
+    <title>Typing test</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>How fast are your fingers?</h1>
+    <h3>You have 30 seconds. Just start typing...</h3>
+    <p>Nam strzelać nie kazano. - Wstąpiłem na działo<br>
+        I spójrzałem na pole; dwieście armat grzmiało.<br>
+        Artyleryi ruskiej ciągną się szeregi,<br>
+        Prosto, długo, daleko, jako morza brzegi;<br>
+        I widziałem ich wodza: przybiegł, mieczem skinął<br>
+        I jak ptak jedno skrzydło wojska swego zwinął;<br>
+        Wylewa się spod skrzydła ściśniona piechota<br>
+        Długą czarną kolumną, jako lawa błota,<br>
+        Nasypana iskrami bagnetów. Jak sępy<br>
+        Czarne chorągwie na śmierć prowadzą zastępy.<br>
+        Przeciw nim sterczy biała, wąska, zaostrzona,<br>
+        Jak głaz bodzący morze, reduta Ordona.</p>
+
+    <textarea rows="15" cols="50"></textarea><br>
+
+    <script>
+        let textarea = document.getElementsByTagName("textarea")[0];
+        let text = document.getElementsByTagName("p")[0].innerText;
+        text = text.replace(/\n/g, " ");
+        let splitText = text.split(" ");
+        console.log(splitText);
+
+        textarea.addEventListener("focus", function (event) {
+            console.log(event);
+            console.log('start counting');
+            event.target.value = "";
+            setTimeout(function () {
+                let lastTextState = event.target.value;
+                lastTextState = lastTextState.replace(/\n/g, " ");
+                console.log(lastTextState);
+                let words = lastTextState.split(" ");
+
+                let correntCounter = 0;
+                let wrongWords = [];
+                for (let i = 0; i < words.length; i++) {
+                    if (words[i] === splitText[i]) {
+                        correntCounter++;
+                    } else {
+                        wrongWords.push(words[i]);
+                    }
+                }
+                console.log("Corrent words", correntCounter);
+
+                console.log(words);
+                let wordsLength = words.length;
+                let textLength = lastTextState.length;
+
+                let counter = document.createElement("p");
+                counter.innerText = "Napisales ogólnie " + wordsLength + " słów i " + textLength + " znaków,";
+                counter.innerText += " z czego " + correntCounter + " słowa są poprawne";
+                let wrongWordsText = document.createElement("p");
+                if (wrongWords.length === 0) {
+                    wrongWordsText.innerText = "";
+                } else {
+                    wrongWordsText.innerText = "Twoje błedne słowa: " + wrongWords.toString();
+                }
+                document.getElementsByTagName("body")[0].appendChild(counter);
+                document.getElementsByTagName("body")[0].appendChild(wrongWordsText);
+            }, 30 * 1000);
+        });
+    </script>
+</body>
 </html>

@@ -4,21 +4,30 @@
 		<title>Change colour</title>
 		<meta charset="UTF-8">
 	</head>
+<<<<<<< HEAD
 	<body oncopy="alert('COPYRIGHT');">
+=======
+	<body oncopy="alert('NIE MA TAKIEGO KOPIOWANIA');">
+>>>>>>> 22c9527ad25371c97ab46a007786be411642fee5
 		<h1>Another Brick in the Wall</h1>
 		<h3>Pink Floyd</h3>
-		<p>We don't need no education<br>
+		<p style="display: none;" >We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
 		Hey! Teachers! Leave them kids alone<br>
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> 22c9527ad25371c97ab46a007786be411642fee5
 		<p style="display: none;">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
 
+<<<<<<< HEAD
 		<p style="display: none;">
 			Pink Floyd were an English rock band formed in London. They achieved international acclaim with their progressive and psychedelic music. Distinguished by their use of philosophical lyrics, sonic experimentation, extended compositions and elaborate live shows, they are one of the most commercially successful and influential groups in the history of popular music.
 		</p>
@@ -48,6 +57,37 @@
 				document.body.style.backgroundColor = "yellow";
 			})
 
+=======
+		<script>
+			let title = document.getElementsByTagName("h1")[0];
+			let bandName = document.getElementsByTagName("h3")[0];
+			let lyrics = document.getElementsByTagName("p")[0];
+			let bandDesc = document.getElementsByTagName("p")[1];
+			let body = document.getElementsByTagName("body")[0];
+
+			title.addEventListener("click", function () {
+                lyrics.style.display = "block";
+            });
+
+			bandName.addEventListener("click", function () {
+                bandDesc.style.display = "block";
+            });
+
+            lyrics.addEventListener("click", function () {
+                lyrics.style.fontStyle = "italic";
+            });
+
+            body.addEventListener("dblclick", function () {
+                body.style.backgroundColor = "yellow";
+            });
+
+            let pic = document.createElement("img");
+            pic.setAttribute("src", "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg");
+
+            bandDesc.addEventListener("click", function () {
+                body.appendChild(pic);
+            });
+>>>>>>> 22c9527ad25371c97ab46a007786be411642fee5
 		</script>
 	</body>
 </html>
