@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Login</legend>
+            <label for="login">
+                Login: 
+                <input type="text" id="login">
+            </label>
+            <label for="password">
+                Password: 
+                <input type="text" id="password">
+            </label>
+
+            <button id="loginButton">Login</button>
+        </fieldset>
+    </form>
+
+    <script>
+        let loginButton = document.querySelector("#loginButton");
+
+        let login = document.querySelector("#login");
+        let password = document.querySelector("#password");
+
+
+        loginButton.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            let localLogin = localStorage.getItem("username");
+            let localPassword = localStorage.getItem("password");
+
+            if (localLogin === undefined || localPassword === undefined) {
+                localStorage.setItem("username", login.value);
+                localStorage.setItem("password", password.value);
+            } else if (localLogin === login.value && localPassword === password.value) {
+                alert("User logged in succesfully");
+            }
+        });
+    </script>
+</body>
+</html>

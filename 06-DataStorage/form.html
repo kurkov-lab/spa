@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Personal Data</legend>
+            <label for="name">
+                Name: 
+                <input type="text" id="name">
+            </label>
+            <label for="surname">
+                Surname: 
+                <input type="text" id="surname">
+            </label>
+
+            <button id="saveButton">Save</button>
+            <button id="restoreButton">Restore</button>
+        </fieldset>
+    </form>
+
+    <script>
+        let saveButton = document.querySelector("#saveButton");
+        let restoreButton = document.querySelector("#restoreButton");
+
+        let name = document.querySelector("#name");
+        let surname = document.querySelector("#surname");
+
+        saveButton.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            localStorage.setItem("name", name.value);
+            localStorage.setItem("surname", surname.value);
+        });
+
+        restoreButton.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            let localName = localStorage.getItem("name");
+            let localSurname = localStorage.getItem("surname");
+
+            name.value = localName;
+            surname.value = localSurname;
+        });
+
+    </script>
+</body>
+</html>
