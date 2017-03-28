@@ -9,56 +9,137 @@
 </head>
 <body>
     <div class="container">
-        <img src="#" alt="Tu logo">
+        <img src="http://www.pikw.pl/files/1766/logo_zielone-pl.png?1467983123440" class="center-block" alt="logo">
         <h2 class="text-center">The personal questionnaire<br>for part-time Bachelor programmes</h2>
 
-        <form>
-            <fieldset class="container">
+        <form class="form-horizontal" id="personalForm">
+            <fieldset>
                 <legend>PERSONAL DATA</legend>
-                <div>
-                    <label for="surname">Surname (family name): </label>
-                    <input type="text" id="surname">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="surname">Surname (family name):</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="surname" placeholder="Enter surname">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="name">Name (names) /first name/:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="name" placeholder="Enter name">
+                    </div>
                 </div>
 
-                <div>
-                    <label for="name">Name (names) /first name/: </label>
-                    <input type="text" id="name">
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Gender</label>
+                    <div class="col-sm-10">
+                        <label class="radio-inline">
+                            <input id="male" name="gender" type="radio" checked>
+                            Male
+                        </label>
+                        <label class="radio-inline">
+                            <input id="female" name="gender" type="radio">
+                            Female
+                        </label>
+                    </div>
                 </div>
 
-                <div>
-                    <label>Gender: </label> <!--NOTE(hubert): just temporary-->
-                    <input type="radio" name="genderType" id="female">
-                    <label for="female">female</label>
-                    <input type="radio" name="genderType" id="male">
-                    <label for="male">male</label>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="fatherName">Father's first name:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="fatherName" placeholder="Enter father's first name">
+                    </div>
                 </div>
 
-                <div>
-                    <label for="fatherName">Father's first name: </label>
-                    <input type="text" id="fatherName">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="motherName">Mother's first name:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="motherName" placeholder="Enter mother's first name">
+                    </div>
                 </div>
 
-                <div>
-                    <label for="motherName">Mother's first name: </label>
-                    <input type="text" id="motherName">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="birthDate">Date of birth:</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" id="birthDate" placeholder="Enter your date of birth">
+                    </div>
                 </div>
 
-                <div>
-                    <label for="birthDate">Date of birth: </label>
-                    <input type="date" id="birthDate">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="birthPlace">Place of birth:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="birthPlace" placeholder="Enter your birth place">
+                    </div>
                 </div>
 
-                <div>
-                    <label for="birthPlace">Place of birth: </label>
-                    <input type="text" id="birthPlace">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="citizenship">Citizenship (country):</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="citizenship">
+                            <option value="poland">Poland</option>
+                            <option value="germany">Germany</option>
+                            <option value="russia"> Russia</option>
+                            <option value="italy">Italy</option>
+                            <option value="sweden">Sweden</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12"/>
+                    <button class="btn btn-default center-block" id="submitButton" onclick="submitForm()">Submit</button>
                 </div>
 
-                <button type="submit" class="btn btn-default">Submit</button>
             </fieldset>
         </form>
+
     </div>
 
     <script>
+        let personalData = {
+            display() {
+                let str = "";
+                let getType = {}; // NOTE(hubert): This is for type checking, in this case for function checking.
+                let functionType = "[object Function]";
+                for (let key in this) {
+                    if (getType.toString.call(this[key]) === functionType) continue;
+                    str += key + " = " + this[key] + "\n";
+                }
+
+                console.log(str);
+            }
+        };
+
+        function submitForm() {
+            let personalForm = document.getElementById("personalForm");
+            personalForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+            });
+
+            let surname = document.querySelector("#surname");
+            let name = document.querySelector("#name");
+            personalData.surname = surname.value;
+            personalData.name = name.value;
+
+            // NOTE(hubert): To chyba mozna zrobic lepiej
+            let male = document.querySelector("#male");
+            let female = document.querySelector("#female");
+            let gender = male.checked ? "male" : "female";
+            personalData.gender = gender;
+
+            let fatherName = document.querySelector("#fatherName");
+            let motherName = document.querySelector("#motherName");
+            personalData.fatherName = fatherName.value;
+            personalData.motherName = motherName.value;
+
+            let birthDate = document.querySelector("#birthDate");
+            personalData.birthDate = birthDate.value;
+            let birthPlace = document.querySelector("#birthPlace");
+            personalData.birthPlace = birthPlace.value;
+
+            let citizenship = document.querySelector("#citizenship");
+            personalData.citizenship = citizenship.value;
+
+            personalData.display();
+        }
     </script>
 </body>
 </html>
