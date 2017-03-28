@@ -1,14 +1,64 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Fill in a form</title>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		
-		<script>
-			// a JavaScript code here ...
-			
-		</script>
-	</body>
+<head>
+    <title>Fill in a form</title>
+    <meta charset="UTF-8">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <img src="#" alt="Tu logo">
+        <h2 class="text-center">The personal questionnaire<br>for part-time Bachelor programmes</h2>
+
+        <form>
+            <fieldset class="container">
+                <legend>PERSONAL DATA</legend>
+                <div>
+                    <label for="surname">Surname (family name): </label>
+                    <input type="text" id="surname">
+                </div>
+
+                <div>
+                    <label for="name">Name (names) /first name/: </label>
+                    <input type="text" id="name">
+                </div>
+
+                <div>
+                    <label>Gender: </label> <!--NOTE(hubert): just temporary-->
+                    <input type="radio" name="genderType" id="female">
+                    <label for="female">female</label>
+                    <input type="radio" name="genderType" id="male">
+                    <label for="male">male</label>
+                </div>
+
+                <div>
+                    <label for="fatherName">Father's first name: </label>
+                    <input type="text" id="fatherName">
+                </div>
+
+                <div>
+                    <label for="motherName">Mother's first name: </label>
+                    <input type="text" id="motherName">
+                </div>
+
+                <div>
+                    <label for="birthDate">Date of birth: </label>
+                    <input type="date" id="birthDate">
+                </div>
+
+                <div>
+                    <label for="birthPlace">Place of birth: </label>
+                    <input type="text" id="birthPlace">
+                </div>
+
+                <button type="submit" class="btn btn-default">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+
+    <script>
+    </script>
+</body>
 </html>
