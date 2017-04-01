@@ -9,37 +9,44 @@
 <body>
     <form>
         <fieldset>
-            <legend>Login</legend>
+            <legend>Username</legend>
             <label for="login">
                 Login: 
                 <input type="text" id="login">
             </label>
             <label for="password">
                 Password: 
-                <input type="text" id="password">
+                <input type="password" id="password">
             </label>
 
-            <button id="loginButton">Login</button>
+            <button id="loginButton">Log in</button>
         </fieldset>
     </form>
 
     <script>
         let loginButton = document.querySelector("#loginButton");
 
-        let login = document.querySelector("#login");
+        let username = document.querySelector("#login");
         let password = document.querySelector("#password");
 
 
         loginButton.addEventListener('click', function(event) {
             event.preventDefault();
 
-            let localLogin = localStorage.getItem("username");
+            let localUsername = localStorage.getItem("username");
             let localPassword = localStorage.getItem("password");
+            console.log("localUsername", localUsername);
+            console.log("localPassword", localPassword);
+            console.log("username", username.value);
+            console.log("passwd", password.value);
 
-            if (localLogin === undefined || localPassword === undefined) {
-                localStorage.setItem("username", login.value);
+            let isUsernameAndPasswordInStorage = localUsername === null || localPassword === null;
+            let isUsernameAndPasswordEqualsInStorage = localUsername === username.value && localPassword === password.value;
+
+            if (isUsernameAndPasswordInStorage) {
+                localStorage.setItem("username", username.value);
                 localStorage.setItem("password", password.value);
-            } else if (localLogin === login.value && localPassword === password.value) {
+            } else if (isUsernameAndPasswordEqualsInStorage) {
                 alert("User logged in succesfully");
             }
         });
