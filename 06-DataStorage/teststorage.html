@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Storage</title>
+</head>
+<body>
+    <script>
+        let Random = {
+            nextInt: function (min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min)) + min;
+            },
+            next: function (max) {
+                return this.nextInt(0, max);
+            }
+        };
+
+        function genLocalStorageKeys(size) {
+            console.log("size: ", size, "keys");
+            let start = Date.now();
+            console.log("start time", start, 'ms');
+            for (let i = 0; i < size; i++) {
+                localStorage.setItem("number" + i, Random.next(1000));
+            }
+
+            let stop = Date.now();
+            let diff = stop - start;
+            console.log("stop time", stop, 'ms');
+            console.log("diff ", diff, 'ms');
+        }
+
+        localStorage.clear();
+//        genLocalStorageKeys(1000);
+//        genLocalStorageKeys(10000);
+        genLocalStorageKeys(100000);
+
+
+    </script>
+</body>
+</html>
