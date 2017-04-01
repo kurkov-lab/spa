@@ -42,24 +42,6 @@
         });
 
         genValuesForTable(db, 10000000);
-
-//        db.transaction(function (tx) {
-//            tx.executeSql('SELECT name, surname FROM USERS ORDER BY surname', [], function (tx, results) {
-//                let length = results.rows.length;
-//
-//                let msg = "<p>Found rows: " + length + "</p>";
-//                let status = document.querySelector("#status");
-//
-//                status.innerHTML += msg;
-//
-//                for (let i = 0; i < length; i++) {
-//                    let item = results.rows.item(i);
-//                    msg = "<p><b>" + item.name + " " + item.surname + "</b></p>";
-//                    console.log(msg);
-//                    status.innerHTML += msg;
-//                }
-//            }, null);
-//        });
     </script>
 </body>
 </html>
