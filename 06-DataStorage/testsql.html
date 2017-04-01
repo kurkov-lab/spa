@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test SQL</title>
+</head>
+<body>
+    <script>
+        let Random = {
+            nextInt: function (min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min)) + min;
+            },
+            next: function (max) {
+                return this.nextInt(0, max);
+            }
+        };
+
+        function genValuesForTable(db, size) {
+            console.log("size: ", size, "keys");
+            db.transaction(function (tx) {
+                let start = Date.now();
+                console.log("start time", start, 'ms');
+
+                for (let i = 0; i < size; i++) {
+                    tx.executeSql('insert into benchmark (value) values (?)', [Random.next(1000)]);
+                }
+
+                let stop = Date.now();
+                let diff = stop - start;
+                console.log("stop time", stop, 'ms');
+                console.log("diff ", diff, 'ms');
+            });
+
+        }
+
+        let db = openDatabase('benchmark', '1.0', 'benchmark', 2 * 1024 * 1024);
+        db.transaction(function (tx) {
+            tx.executeSql("DROP TABLE IF EXISTS benchmark");
+            tx.executeSql('CREATE TABLE IF NOT EXISTS benchmark(value)');
+        });
+
+        genValuesForTable(db, 10000000);
+
+//        db.transaction(function (tx) {
+//            tx.executeSql('SELECT name, surname FROM USERS ORDER BY surname', [], function (tx, results) {
+//                let length = results.rows.length;
+//
+//                let msg = "<p>Found rows: " + length + "</p>";
+//                let status = document.querySelector("#status");
+//
+//                status.innerHTML += msg;
+//
+//                for (let i = 0; i < length; i++) {
+//                    let item = results.rows.item(i);
+//                    msg = "<p><b>" + item.name + " " + item.surname + "</b></p>";
+//                    console.log(msg);
+//                    status.innerHTML += msg;
+//                }
+//            }, null);
+//        });
+    </script>
+</body>
+</html>
