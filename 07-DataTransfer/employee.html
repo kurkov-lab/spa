@@ -7,10 +7,12 @@
 	<body>
 		<h1>Employee</h1>
 		<p></p>
-		
+
+		<script src='jquery-3.1.1.min.js'></script>
 		<script>
-			// a JavaScript code here ...
-			
+			$.getJSON('employee.json', function(data) {
+				console.log(data);
+			});
 		</script>
 	</body>
 </html>
