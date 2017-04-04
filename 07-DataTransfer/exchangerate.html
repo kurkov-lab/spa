@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <button>EUR</button>
+    <button>GBP</button>
+    <button>USD</button>
+    <div class="content"></div>
+
+    <script src='jquery-3.1.1.min.js'></script>
+    <script>
+
+        let buttons = document.querySelectorAll("button");
+
+        $('button').on('click', function() {
+            let code = $(this).html();
+            $.getJSON('http://api.nbp.pl/api/exchangerates/rates/a/'+code+'?format=json', function(res) {
+                $('.content').html("PLN: " + res.rates[0].mid);
+            });
+        });
+    </script>
+</body>
+</html>
