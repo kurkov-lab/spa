@@ -21,6 +21,16 @@
         let maxItems = 5;
         let currentItem = 0;
 
+        function getData(item) {
+            $.getJSON("products.php?n=" + item, function(res) {
+                $("#jsonId").html("id: " + res.id);
+                $("#inStock").html("instock: " + res.instock);
+                $("#name").html("name: " + res.name);
+                $("#price").html("price: " + res.price);
+                console.log(res);
+            });
+        }
+
         $("#prevButton").on('click', function() {
             currentItem--;
             if (currentItem <= 0) {
@@ -29,14 +39,7 @@
 
             console.log("currentItem", currentItem);
 
-            $.getJSON("products.php?n=" + currentItem, function(res) {
-                $("#jsonId").html("id: " + res.id);
-                $("#inStock").html("instock: " + res.instock);
-                $("#name").html("name: " + res.name);
-                $("#price").html("price: " + res.price);
-                console.log(res);
-            });
-            console.log(this);
+            getData(currentItem);
         });
 
         $("#nextButton").on('click', function() {
@@ -46,38 +49,8 @@
             }
 
             console.log("currentItem", currentItem);
-
-            $.getJSON("products.php?n=" + currentItem, function(res) {
-                $("#jsonId").html("id: " + res.id);
-                $("#inStock").html("instock: " + res.instock);
-                $("#name").html("name: " + res.name);
-                $("#price").html("price: " + res.price);
-                console.log(res);
-            });
+            getData(currentItem);
         });
-
-        //        getButton.addEventListener("click", function(event) {
-        //            let inputNumber = document.querySelector("#number");
-        //            let num = parseInt(inputNumber.value);
-        //            console.log(num);
-        //
-        //            if (num >= 1 && num <= 5) {
-        //                $("#error").html("");
-        //                $.getJSON("products.php?n=" + num, function(res) {
-        //                    $("#jsonId").html("id: " + res.id);
-        //                    $("#inStock").html("instock: " + res.instock);
-        //                    $("#name").html("name: " + res.name);
-        //                    $("#price").html("price: " + res.price);
-        //                    console.log(res);
-        //                });
-        //            } else {
-        //                $("#error").html("No product");
-        //                $("#jsonId").html("");
-        //                $("#inStock").html("");
-        //                $("#name").html("");
-        //                $("#price").html("");
-        //            }
-        //        });
     </script>
 </body>
 </html>
