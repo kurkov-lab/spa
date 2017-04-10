@@ -2,18 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Products</title>
+    <title>Shop</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <style>
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
 </head>
 <body>
 
-    <button id="prevButton">Previous</button>
-    <button id="nextButton">Next</button>
+    <div class="container">
+        <div class="buttons">
+            <button id="prevButton" class="btn btn-default">Previous</button>
+            <button id="nextButton" class="btn btn-default">Next</button>
+        </div>
 
-    <div id="jsonData">
-        <p id="jsonId"></p>
-        <p id="inStock"></p>
-        <p id="name"></p>
-        <p id="price"></p>
+        <div class="container">
+            <div id="jsonData" class="hide">
+                <p id="jsonId"></p>
+                <p id="inStock"></p>
+                <p id="name"></p>
+                <p id="price"></p>
+            </div>
+        </div>
     </div>
 
     <script src='jquery-3.1.1.min.js'></script>
@@ -23,6 +41,10 @@
 
         function getData(item) {
             $.getJSON("products.php?n=" + item, function(res) {
+                let $jsonData = $("#jsonData");
+                $jsonData.addClass("show");
+                $jsonData.removeClass("hide");
+
                 $("#jsonId").html("id: " + res.id);
                 $("#inStock").html("instock: " + res.instock);
                 $("#name").html("name: " + res.name);
@@ -38,7 +60,6 @@
             }
 
             console.log("currentItem", currentItem);
-
             getData(currentItem);
         });
 
