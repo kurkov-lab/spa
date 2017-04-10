@@ -17,31 +17,34 @@
             }
         };
 
-        function genValuesForTable(db, size) {
+        function genValuesForTable(tx, size) {
             console.log("size: ", size, "keys");
-            db.transaction(function (tx) {
-                let start = Date.now();
-                console.log("start time", start, 'ms');
+            let start = Date.now();
+            console.log("start time", start, 'ms');
 
-                for (let i = 0; i < size; i++) {
-                    tx.executeSql('insert into benchmark (value) values (?)', [Random.next(1000)]);
-                }
+            for (let i = 0; i < size; i++) {
+                tx.executeSql('insert into benchmark (value) values (?)', [Random.next(1000)]);
+            }
 
-                let stop = Date.now();
-                let diff = stop - start;
-                console.log("stop time", stop, 'ms');
-                console.log("diff ", diff, 'ms');
-            });
-
+            let stop = Date.now();
+            let diff = stop - start;
+            console.log("stop time", stop, 'ms');
+            console.log("diff ", diff, 'ms');
         }
 
         let db = openDatabase('benchmark', '1.0', 'benchmark', 2 * 1024 * 1024);
         db.transaction(function (tx) {
             tx.executeSql("DROP TABLE IF EXISTS benchmark");
             tx.executeSql('CREATE TABLE IF NOT EXISTS benchmark(value)');
+
+            genValuesForTable(tx, 10000000);
+
         });
 
-        genValuesForTable(db, 10000000);
+        db.transaction(function (tx) {
+            tx.executeSql("DROP TABLE IF EXISTS benchmark");
+        });
+
     </script>
 </body>
 </html>
