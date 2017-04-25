@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Currency Exchange Table</title>
 	<meta charset="UTF-8">
-	<script src="model.js"></script>
-	<script src="view.js"></script>
-	<script src="controller.js"></script>
+
+	<style>
+		table, td, th {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+	</style>
 </head>
+
 <body onload="controller.updateView()">
 	<h1>Currency Exchange Table</h1>
 	<div id="dataview"></div>
 	<hr>
 	<h3>Add new currency</h3>
-	
+
 	<p>
 		Currency code (e.g. EUR):<br>
 		<select name="curCode" id="curCode">
@@ -45,5 +51,11 @@
 	</p>
 
 	<input type="button" value="Add new currency" onclick="view.addCurrency()">
+
+
+	<script src="model.js"></script>
+	<script src="view.js"></script>
+	<script src="controller.js"></script>
 </body>
+
 </html>
