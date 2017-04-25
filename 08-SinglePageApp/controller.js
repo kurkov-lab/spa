@@ -6,7 +6,8 @@ var controller = {
 		this.model.addData(currency);
 		this.updateView();
 	},
-	delCurrency: function (code) {
+	delCurrency: function (obj) {
+		model.delData(obj);
 	},
 	updateView: function () {
 		this.data = this.getCurrency();
