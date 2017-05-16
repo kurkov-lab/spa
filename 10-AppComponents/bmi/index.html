@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div ng-app="bmiModule" ng-controller="bmi">
+        Masa <input type="number" ng-model="mass"><br>
+        Wysokość <input type="number" ng-model="height"><br>
+        BMI: <span>{{bmiResult}}</span><br>
+        <button ng-click="bmi.calculate()">Licz</button>
+    </div>
+    <script src="../angular.min.js"></script>
+    <script src="app.module.js"></script>
+</body>
+</html>
